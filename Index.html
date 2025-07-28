@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Six Red Marbles | VR Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="Styles.css" />
+  <script defer src="interact.js"></script>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo-img">
+        <img src="SRM Logo_India.png" alt="Six Red Marbles India" />
+      </a>
+      <ul class="nav-menu">
+        <li><a href="#hero" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About Us</a></li>
+        <li><a href="#our-works" class="nav-link">Our Works</a></li>
+        <li><a href="#blogs" class="nav-link">Blogs</a></li>
+        <!--<li><a href="#contact" class="nav-link">Contact Us</a></li>-->
+      </ul>
+      <a href="#contact" class="btn btn-outline">CONTACT</a>
+      <div class="nav-toggle" id="mobile-menu">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="section hero-section">
+    <div class="hero-content container">
+      <div class="hero-text">
+        <h1>Transform Learning with Immersive VR Solutions</h1>
+        <p class="hero-subtitle">VR training improves knowledge retention by up to 75% compared to traditional methods.</p>
+        <a href="#contact" class="btn btn-primary">Start Your VR Journey</a>
+      </div>
+      <div class="hero-visual">
+        <div class="unity-placeholder">Unity 3D Interactive Component</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Metrics Section -->
+  <section class="section metrics-section">
+    <div class="container metrics-container">
+      <div class="metric-card">
+        <div class="metric-number">75%</div>
+        <div class="metric-text">Higher Knowledge Retention</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-number">94%</div>
+        <div class="metric-text">Boosted Business Efficiency</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-number">32%</div>
+        <div class="metric-text">Faster VR Onboarding</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us Section -->
+  <section id="about" class="section about-section container">
+    <h2 class="section-title left">About Us</h2>
+    <div class="about-block">
+      <div class="about-text">
+        <h3 class="about-heading">Who We Are</h3>
+        <p>
+          At <a href="https://www.sixredmarbles.com/">Six Red Marbles</a>, we’ve spent decades pushing the boundaries of content and technology in education. Today, we’re expanding that mission—bringing immersive Virtual Reality experiences into not just learning, but into how people engage, explore, and evolve.<br><br>
+          Our VR solutions are built to go beyond the classroom or the training floor. We design experiences that simulate environments, provoke emotion, spark behavior change, and make abstract concepts tangible. Whether it’s a medical training lab, a soft-skill roleplay, an interactive product showcase, or a virtual cultural journey—our goal is the same: create moments that matter.<br><br>
+          We bring together proven learning science, human-centered design, and immersive tech to help organizations deliver VR with purpose and impact.
+        </p>
+        <div class="team-summary">
+          <strong>Our Developer Network</strong>
+          <p>
+            Our in-house and partner developer teams bring deep, project-tested expertise—delivering industry-wide VR solutions in healthcare, corporate learning, product showcases, and more. We believe in applied, scalable innovation proven on real projects, with measurable results for every client.
+          </p>
+        </div>
+      </div>
+      <div class="about-text">
+        <h3 class="about-heading">Why VR – Why We Got Into It</h3>
+        <ul class="why-vr-list">
+          <li><strong>Because the world doesn’t just read or watch anymore—it experiences.</strong></li>
+          <li>We saw a need for more experiential, memorable, and realistic ways to communicate knowledge, values, and skills.</li>
+          <li><strong>Learning that sticks:</strong> VR offers active, first-person engagement—ideal for deep learning, practice, and retention.</li>
+          <li><strong>Behavioral transformation:</strong> VR lets you simulate real-life pressure, feedback, and reflection.</li>
+          <li><strong>Scalable experiences:</strong> Deploy training, demos, and protocols anywhere—no physical limits.</li>
+          <li><strong>Emotional resonance:</strong> VR connects in ways static content can’t.</li>
+          <li><strong>Strategic innovation:</strong> We help our clients lead the next frontier, not follow trends.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Works Section -->
+  <section id="our-works" class="section works-section container">
+    <h2 class="section-title left">Our Works</h2>
+    <div class="works-grid">
+      <div class="work-card" tabindex="0">
+        <img src="https://via.placeholder.com/320x180?text=Healthcare+VR" alt="Healthcare VR Demo" />
+        <p class="work-desc">Healthcare VR: Reduce errors by 40% during procedural training.</p>
+        <div class="video-modal">
+          <video controls muted preload="metadata">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+      <div class="work-card" tabindex="0">
+        <img src="https://via.placeholder.com/320x180?text=Corporate+Training+VR" alt="Corporate VR demo"/>
+        <p class="work-desc">Corporate Training: Cut onboarding time by 32% with immersive VR.</p>
+        <div class="video-modal">
+          <video controls muted preload="metadata">
+            <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+      <div class="work-card" tabindex="0">
+        <img src="https://via.placeholder.com/320x180?text=Safety+Training+VR" alt="Safety VR demo" />
+        <p class="work-desc">Safety Training: Enhance situational awareness in hazardous environments.</p>
+        <div class="video-modal">
+          <video controls muted preload="metadata">
+            <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm"/>
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+    <div id="modal-overlay"></div>
+  </section>
+
+  <!-- Blogs Section -->
+  <section id="blogs" class="section blogs-section container">
+    <h2 class="section-title left">Blogs</h2>
+    <div class="blogs-grid">
+      <a href="https://example.com/blog1" target="_blank" class="blog-card">
+        <img src="https://via.placeholder.com/300x180?text=VR+in+Education" alt="VR in Education" />
+        <div class="blog-content">
+          <h3>How VR is Transforming Education</h3>
+          <p>Learn how immersive learning environments boost student engagement and outcomes.</p>
+        </div>
+      </a>
+      <a href="https://example.com/blog2" target="_blank" class="blog-card">
+        <img src="https://via.placeholder.com/300x180?text=VR+Healthcare" alt="VR Healthcare"/>
+        <div class="blog-content">
+          <h3>Virtual Reality for Healthcare Training</h3>
+          <p>Explore case studies where VR decreases errors and improves skills retention.</p>
+        </div>
+      </a>
+      <a href="https://example.com/blog3" target="_blank" class="blog-card">
+        <img src="https://via.placeholder.com/300x180?text=VR+Trends+2025" alt="VR Trends 2025" />
+        <div class="blog-content">
+          <h3>Top VR Trends to Watch in 2025</h3>
+          <p>Stay ahead with the latest advancements shaping immersive technology adoption.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Contact / CTA Section -->
+  <section id="contact" class="section contact-section container">
+    <h2 class="section-title left">Ready To Transform?</h2>
+    <form id="contact-form" class="contact-form" novalidate autocomplete="off">
+      <div class="form-group">
+        <label for="name">Name*</label>
+        <input type="text" id="name" name="Name" placeholder="Your full name" required />
+      </div>
+      <div class="form-group">
+        <label for="email">Email*</label>
+        <input type="email" id="email" name="Email" placeholder="Your email address" required />
+      </div>
+      <div class="form-group">
+        <label for="company">Company*</label>
+        <input type="text" id="company" name="Company" placeholder="Your company name" required />
+      </div>
+      <div class="form-group">
+        <label for="message">Message*</label>
+        <textarea id="message" name="Message" rows="4" placeholder="How can we help you?" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Send Message</button>
+      <div id="form-status" aria-live="polite" class="form-status"></div>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <a href="https://sixredmarbles.com" target="_blank" class="footer-logo-link">
+        <img src="SRM Logo_India.png" alt="Six Red Marbles India" class="footer-logo" />
+      </a>
+      <div class="footer-contact">salesindia@sixredmarbles.in</div>
+    </div>
+  </footer>
+
+</body>
+</html>
