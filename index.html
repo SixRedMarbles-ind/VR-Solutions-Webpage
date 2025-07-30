@@ -75,12 +75,7 @@
           Our VR solutions are built to go beyond the classroom or the training floor. We design experiences that simulate environments, provoke emotion, spark behavior change, and make abstract concepts tangible. Whether it’s a medical training lab, a soft-skill roleplay, an interactive product showcase, or a virtual cultural journey—our goal is the same: create moments that matter.<br><br>
           We bring together proven learning science, human-centered design, and immersive tech to help organizations deliver VR with purpose and impact.
         </p>
-        <div class="team-summary">
-          <strong>Our Developer Network</strong>
-          <p>
-            Our in-house and partner developer teams bring deep, project-tested expertise—delivering industry-wide VR solutions in healthcare, corporate learning, product showcases, and more. We believe in applied, scalable innovation proven on real projects, with measurable results for every client.
-          </p>
-        </div>
+
       </div>
       <div class="about-text">
         <h3 class="about-heading">Why VR – Why We Got Into It</h3>
@@ -95,44 +90,42 @@
         </ul>
       </div>
     </div>
+    
+    <!-- Our Developer Network Section -->
+    <div class="developer-network-section">
+      <h3 class="about-heading">Our Developer Network</h3>
+      <p>
+        With deep experience working with international partners and clients, including government bodies, universities, and corporates, we bring a global perspective grounded in local excellence. Our extended teams in France and Romania strengthen our capacity and innovation—most notably, we are proud to have contributed to government-backed VR initiatives in France, developing solutions for public services and education.
+      </p>
+    </div>
   </section>
 
   <!-- Our Works Section -->
   <section id="our-works" class="section works-section container">
     <h2 class="section-title left">Our Works</h2>
     <div class="works-grid">
-      <div class="work-card" tabindex="0">
-        <img src="https://via.placeholder.com/320x180?text=Healthcare+VR" alt="Healthcare VR Demo" />
-        <p class="work-desc">Healthcare VR: Reduce errors by 40% during procedural training.</p>
-        <div class="video-modal">
-          <video controls muted preload="metadata">
-            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+      <div class="work-card" tabindex="0" data-video="qwXOMzUVIoo">
+        <img src="https://img.youtube.com/vi/qwXOMzUVIoo/maxresdefault.jpg" alt="Healthcare VR Demo" />
+        <div class="play-overlay">
+          <div class="play-icon">▶</div>
         </div>
+        <p class="work-desc">VR Training: Hydrogen Factory Interactive Training </p>
       </div>
-      <div class="work-card" tabindex="0">
-        <img src="https://via.placeholder.com/320x180?text=Corporate+Training+VR" alt="Corporate VR demo"/>
-        <p class="work-desc">Corporate Training: Cut onboarding time by 32% with immersive VR.</p>
-        <div class="video-modal">
-          <video controls muted preload="metadata">
-            <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+      <div class="work-card" tabindex="0" data-video="Vs2ObmvJSrw">
+        <img src="https://img.youtube.com/vi/Vs2ObmvJSrw/maxresdefault.jpg" alt="Corporate VR demo"/>
+        <div class="play-overlay">
+          <div class="play-icon">▶</div>
         </div>
+        <p class="work-desc">VR Simulation: Wind Turbine Motor Inspection Training </p>
       </div>
-      <div class="work-card" tabindex="0">
-        <img src="https://via.placeholder.com/320x180?text=Safety+Training+VR" alt="Safety VR demo" />
-        <p class="work-desc">Safety Training: Enhance situational awareness in hazardous environments.</p>
-        <div class="video-modal">
-          <video controls muted preload="metadata">
-            <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm"/>
-            Your browser does not support the video tag.
-          </video>
+      <div class="work-card" tabindex="0" data-video="irK-zp9lwag">
+        <img src="https://img.youtube.com/vi/irK-zp9lwag/maxresdefault.jpg" alt="Safety VR demo" />
+        <div class="play-overlay">
+          <div class="play-icon">▶</div>
         </div>
+        <p class="work-desc">VR Assistance: International Adaptability Training for Individuals.</p>
       </div>
     </div>
-    <div id="modal-overlay"></div>
   </section>
 
   <!-- Blogs Section -->
@@ -194,9 +187,17 @@
       <a href="https://sixredmarbles.com" target="_blank" class="footer-logo-link">
         <img src="SRM Logo_India.png" alt="Six Red Marbles India" class="footer-logo" />
       </a>
-      <div class="footer-contact">salesindia@sixredmarbles.in</div>
+      <div class="footer-contact">salesindia@sixredmarbles.com</div>
     </div>
   </footer>
+
+  <!-- Video Modal Container -->
+  <div id="videoModal" class="video-modal">
+    <button class="video-close-btn" onclick="closeVideoModal()">&times;</button>
+    <div class="video-container">
+      <iframe id="videoIframe" width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
 
 </body>
 </html>
