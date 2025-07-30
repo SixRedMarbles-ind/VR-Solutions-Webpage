@@ -85,10 +85,10 @@ document.addEventListener('DOMContentLoaded', function() {
   function openVideoModal(videoId) {
     if (videoModal && videoIframe) {
       // Set the video source directly
-      videoIframe.src = `https://www.youtube.com/embed/${videoId}?mute=1&autoplay=1&rel=0&showinfo=0`;
+      videoIframe.src = `https://www.youtube.com/embed/${videoId}?mute=1&autoplay=1&rel=0&showinfo=0&origin=${window.location.origin}&enablejsapi=1`;
       
       // Show the modal
-      videoModal.style.display = 'block';
+      videoModal.style.setProperty('display', 'block', 'important');
       
       // Store current video ID for reference
       videoModal.setAttribute('data-current-video', videoId);
@@ -102,8 +102,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (videoModal && videoIframe) {
       // Clear the video source to stop playback
       videoIframe.src = '';
-      // Hide the modal
-      videoModal.style.display = 'none';
+      
+      // Hide the modal with important display property
+      videoModal.style.setProperty('display', 'none', 'important');
       console.log('Video modal closed');
     }
   }
