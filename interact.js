@@ -14,7 +14,7 @@ document.querySelectorAll('.nav-link').forEach(link => {
 });
 
 // SheetDB API endpoint
-const SHEETDB_API = "https://sheetdb.io/api/v1/ltnoe7dwmxna4";
+const SHEETDB_API = "https://sheetdb.io/api/v1/ltnoe7dwmxna4";  
 
 // Form handling
 const form = document.getElementById('contact-form');
@@ -66,53 +66,105 @@ form.addEventListener('submit', async (e) => {
 
 /* OUR WORKS Modal logic */
 
-// Grab all work cards and the modal overlay
-const workCards = document.querySelectorAll('.work-card');
-const overlay = document.getElementById('modal-overlay');
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOM loaded, setting up video modals...'); // Debug log
+  
+  // Get the video modal and iframe
+  const videoModal = document.getElementById('videoModal');
+  const videoIframe = document.getElementById('videoIframe');
+  const videoThumbnail = document.getElementById('videoThumbnail');
+  const thumbnailImg = document.getElementById('thumbnailImg');
+  const playButton = document.querySelector('.play-button');
+  
+  // Grab all work cards
+  const workCards = document.querySelectorAll('.work-card');
+  console.log('Found work cards:', workCards.length); // Debug log
 
-// Function to close all modals
-function closeAllModals() {
-  document.querySelectorAll('.work-card .video-modal').forEach(modal => {
-    modal.style.display = 'none';
-    const video = modal.querySelector('video');
-    if (video) video.pause();
-  });
-  overlay.style.display = 'none';
-}
-
-// Add event listeners for modal open on click of work cards
-workCards.forEach(card => {
-  card.addEventListener('click', function(e) {
-    // Prevent modal open if clicked inside modal video itself (optional enhancement)
-    // Not needed here since modal is inside card hidden until open
-    
-    const videoModal = card.querySelector('.video-modal');
-    if (videoModal) {
+  // Function to open video modal
+  function openVideoModal(videoId) {
+    if (videoModal && videoIframe) {
+      // Set the video source directly
+      videoIframe.src = `https://www.youtube.com/embed/${videoId}?mute=1&autoplay=1&rel=0&showinfo=0`;
+      
+      // Show the modal
       videoModal.style.display = 'block';
-      overlay.style.display = 'block';
-      // Pause all other videos just in case
-      document.querySelectorAll('.work-card .video-modal video').forEach(vid => vid.pause());
-      // Play the clicked card's video
-      const video = videoModal.querySelector('video');
-      if(video) video.play();
+      
+      // Store current video ID for reference
+      videoModal.setAttribute('data-current-video', videoId);
+      
+      console.log('Video modal opened with video ID:', videoId);
     }
-  });
-
-  // Accessibility: open modal on keyboard Enter or Space
-  card.addEventListener('keydown', function(e) {
-    if(e.key === 'Enter' || e.key === ' '){
-      e.preventDefault();
-      card.click();
-    }
-  });
-});
-
-// Close modal on clicking the overlay
-overlay.addEventListener('click', closeAllModals);
-
-// Close modal on pressing the ESC key
-window.addEventListener('keydown', (e) => {
-  if(e.key === "Escape") {
-    closeAllModals();
   }
+
+  // Function to close video modal
+  function closeVideoModal() {
+    if (videoModal && videoIframe) {
+      // Clear the video source to stop playback
+      videoIframe.src = '';
+      // Hide the modal
+      videoModal.style.display = 'none';
+      console.log('Video modal closed');
+    }
+  }
+
+  // Make closeVideoModal globally available
+  window.closeVideoModal = closeVideoModal;
+
+
+
+  // Add event listeners for modal open on click of work cards
+  workCards.forEach((card, index) => {
+    console.log(`Setting up card ${index + 1}`); // Debug log
+    
+    // Function to open video for this card
+    function openVideoForCard() {
+      console.log(`Work card ${index + 1} clicked!`); // Debug log
+      const videoId = card.getAttribute('data-video');
+      if (videoId) {
+        openVideoModal(videoId);
+      } else {
+        console.log('No video ID found in card'); // Debug log
+      }
+    }
+    
+    // Click handler for the entire card
+    card.addEventListener('click', function(e) {
+      openVideoForCard();
+    });
+
+    // Click handler for play icon specifically
+    const playIcon = card.querySelector('.play-icon');
+    if (playIcon) {
+      playIcon.addEventListener('click', function(e) {
+        e.stopPropagation(); // Prevent card click from also firing
+        openVideoForCard();
+      });
+    }
+
+    // Accessibility: open modal on keyboard Enter or Space
+    card.addEventListener('keydown', function(e) {
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        openVideoForCard();
+      }
+    });
+  });
+
+  // Close modal on pressing the ESC key
+  window.addEventListener('keydown', (e) => {
+    if(e.key === "Escape") {
+      closeVideoModal();
+    }
+  });
+
+  // Close modal on clicking outside the video
+  document.addEventListener('click', (e) => {
+    if (videoModal && videoModal.style.display === 'block') {
+      // Close if clicking on the modal background (not the iframe or close button)
+      if (e.target === videoModal || (e.target.classList.contains('video-modal') && !e.target.classList.contains('video-close-btn'))) {
+        closeVideoModal();
+      }
+    }
+  });
 });
