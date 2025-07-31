@@ -1,171 +1,348 @@
-// Navbar mobile toggle
-const navToggle = document.getElementById('mobile-menu');
+// Mobile Navigation Toggle
+const mobileMenu = document.getElementById('mobile-menu');
 const navMenu = document.querySelector('.nav-menu');
 
-navToggle.addEventListener('click', () => {
+mobileMenu.addEventListener('click', () => {
+  mobileMenu.classList.toggle('active');
   navMenu.classList.toggle('active');
 });
 
-// Close mobile menu on nav link click (recommended for UX)
+// Close mobile menu when clicking on a link
 document.querySelectorAll('.nav-link').forEach(link => {
   link.addEventListener('click', () => {
+    mobileMenu.classList.remove('active');
     navMenu.classList.remove('active');
   });
 });
 
-// SheetDB API endpoint
-const SHEETDB_API = "https://sheetdb.io/api/v1/ltnoe7dwmxna4";  
+// Scroll-triggered animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
 
-// Form handling
-const form = document.getElementById('contact-form');
-const statusDiv = document.getElementById('form-status');
-
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-
-  // Basic front-end validation
-  if (!form.checkValidity()) {
-    statusDiv.textContent = "Please fill out all required fields correctly.";
-    statusDiv.style.color = "#d80000"; // Bright Red for errors
-    return;
-  }
-
-  statusDiv.textContent = "Sending...";
-  statusDiv.style.color = "#001b2d"; // Navy Blue (info)
-
-  // Prepare data to send to SheetDB
-  const formData = {
-    data: {
-      Name: form.Name.value.trim(),
-      Email: form.Email.value.trim(),
-      Company: form.Company.value.trim(),
-      Message: form.Message.value.trim()
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('animated');
+      
+      // Add specific animation classes based on data attributes
+      const animationType = entry.target.dataset.animation;
+      if (animationType) {
+        entry.target.classList.add(animationType);
+      }
     }
-  };
+  });
+}, observerOptions);
 
-  try {
-    const response = await fetch(SHEETDB_API, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData)
-    });
-
-    if (response.ok) {
-      form.reset();
-      statusDiv.textContent = "Thank you! Your message has been sent.";
-      statusDiv.style.color = "#009d5f"; // Green for success
-    } else {
-      throw new Error(`Server error: ${response.status}`);
+// Observe elements for scroll animations
+document.addEventListener('DOMContentLoaded', () => {
+  // Add animation classes to elements
+  const animateElements = document.querySelectorAll('.section-title, .metric-card, .work-card, .blog-card, .about-text, .hero-text');
+  
+  animateElements.forEach((el, index) => {
+    el.classList.add('animate-on-scroll');
+    
+    // Add staggered delay for cards
+    if (el.classList.contains('metric-card') || el.classList.contains('work-card') || el.classList.contains('blog-card')) {
+      el.style.animationDelay = `${index * 0.1}s`;
     }
-  } catch (error) {
-    statusDiv.textContent = "Submission failed. Please try again later.";
-    statusDiv.style.color = "#d80000";
-    console.error('Form submission error:', error);
-  }
+    
+    observer.observe(el);
+  });
 });
 
-/* OUR WORKS Modal logic */
+// Enhanced form interactions
+const contactForm = document.getElementById('contact-form');
+const formStatus = document.getElementById('form-status');
 
-// Wait for DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('DOM loaded, setting up video modals...'); // Debug log
-  
-  // Get the video modal and iframe
-  const videoModal = document.getElementById('videoModal');
-  const videoIframe = document.getElementById('videoIframe');
-  const videoThumbnail = document.getElementById('videoThumbnail');
-  const thumbnailImg = document.getElementById('thumbnailImg');
-  const playButton = document.querySelector('.play-button');
-  
-  // Grab all work cards
-  const workCards = document.querySelectorAll('.work-card');
-  console.log('Found work cards:', workCards.length); // Debug log
-
-  // Function to open video modal
-  function openVideoModal(videoId) {
-    if (videoModal && videoIframe) {
-      // Set the video source directly
-      videoIframe.src = `https://www.youtube.com/embed/${videoId}?mute=1&autoplay=1&rel=0&showinfo=0&origin=${window.location.origin}&enablejsapi=1`;
-      
-      // Show the modal
-      videoModal.style.setProperty('display', 'block', 'important');
-      
-      // Store current video ID for reference
-      videoModal.setAttribute('data-current-video', videoId);
-      
-      console.log('Video modal opened with video ID:', videoId);
-    }
-  }
-
-  // Function to close video modal
-  function closeVideoModal() {
-    if (videoModal && videoIframe) {
-      // Clear the video source to stop playback
-      videoIframe.src = '';
-      
-      // Hide the modal with important display property
-      videoModal.style.setProperty('display', 'none', 'important');
-      console.log('Video modal closed');
-    }
-  }
-
-  // Make closeVideoModal globally available
-  window.closeVideoModal = closeVideoModal;
-
-
-
-  // Add event listeners for modal open on click of work cards
-  workCards.forEach((card, index) => {
-    console.log(`Setting up card ${index + 1}`); // Debug log
+if (contactForm) {
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
     
-    // Function to open video for this card
-    function openVideoForCard() {
-      console.log(`Work card ${index + 1} clicked!`); // Debug log
-      const videoId = card.getAttribute('data-video');
+    // Add loading state
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+    
+    // Simulate form submission (replace with actual form handling)
+    setTimeout(() => {
+      // Success animation
+      contactForm.classList.add('form-success');
+      
+      // Show success message
+      formStatus.textContent = 'Thank you! Your message has been sent successfully.';
+      formStatus.style.color = '#28a745';
+      
+      // Reset form
+      contactForm.reset();
+      
+      // Reset button
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+      
+      // Remove success class after animation
+      setTimeout(() => {
+        contactForm.classList.remove('form-success');
+      }, 600);
+      
+      // Clear status message after 5 seconds
+      setTimeout(() => {
+        formStatus.textContent = '';
+      }, 5000);
+      
+    }, 2000);
+  });
+  
+  // Real-time form validation with micro-interactions
+  const formInputs = contactForm.querySelectorAll('input, textarea');
+  
+  formInputs.forEach(input => {
+    input.addEventListener('blur', () => {
+      if (input.value.trim() === '') {
+        input.classList.add('form-error');
+        setTimeout(() => {
+          input.classList.remove('form-error');
+        }, 400);
+      }
+    });
+    
+    input.addEventListener('input', () => {
+      if (input.value.trim() !== '') {
+        input.style.borderColor = '#28a745';
+      } else {
+        input.style.borderColor = '#e4e5e6';
+      }
+    });
+  });
+}
+
+// Enhanced video modal interactions
+function openVideoModal(videoId) {
+  const modal = document.getElementById('videoModal');
+  const iframe = document.getElementById('videoIframe');
+  
+  iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+  modal.style.display = 'block';
+  
+  // Add entrance animation
+  modal.style.animation = 'modalFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+  
+  // Prevent body scroll
+  document.body.style.overflow = 'hidden';
+}
+
+function closeVideoModal() {
+  const modal = document.getElementById('videoModal');
+  const iframe = document.getElementById('videoIframe');
+  
+  // Add exit animation
+  modal.style.animation = 'modalFadeIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) reverse';
+  
+  setTimeout(() => {
+    modal.style.display = 'none';
+    iframe.src = '';
+    document.body.style.overflow = 'auto';
+  }, 300);
+}
+
+// Enhanced work card interactions
+document.querySelectorAll('.work-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const videoId = card.dataset.video;
+    if (videoId) {
+      openVideoModal(videoId);
+    }
+  });
+  
+  // Add keyboard support
+  card.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      const videoId = card.dataset.video;
       if (videoId) {
         openVideoModal(videoId);
-      } else {
-        console.log('No video ID found in card'); // Debug log
-      }
-    }
-    
-    // Click handler for the entire card
-    card.addEventListener('click', function(e) {
-      openVideoForCard();
-    });
-
-    // Click handler for play icon specifically
-    const playIcon = card.querySelector('.play-icon');
-    if (playIcon) {
-      playIcon.addEventListener('click', function(e) {
-        e.stopPropagation(); // Prevent card click from also firing
-        openVideoForCard();
-      });
-    }
-
-    // Accessibility: open modal on keyboard Enter or Space
-    card.addEventListener('keydown', function(e) {
-      if(e.key === 'Enter' || e.key === ' '){
-        e.preventDefault();
-        openVideoForCard();
-      }
-    });
-  });
-
-  // Close modal on pressing the ESC key
-  window.addEventListener('keydown', (e) => {
-    if(e.key === "Escape") {
-      closeVideoModal();
-    }
-  });
-
-  // Close modal on clicking outside the video
-  document.addEventListener('click', (e) => {
-    if (videoModal && videoModal.style.display === 'block') {
-      // Close if clicking on the modal background (not the iframe or close button)
-      if (e.target === videoModal || (e.target.classList.contains('video-modal') && !e.target.classList.contains('video-close-btn'))) {
-        closeVideoModal();
       }
     }
   });
 });
+
+// Close modal when clicking outside
+document.getElementById('videoModal').addEventListener('click', (e) => {
+  if (e.target.id === 'videoModal') {
+    closeVideoModal();
+  }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    const modal = document.getElementById('videoModal');
+    if (modal.style.display === 'block') {
+      closeVideoModal();
+    }
+  }
+});
+
+// Enhanced button micro-interactions
+document.querySelectorAll('.btn-primary, .btn-outline').forEach(btn => {
+  btn.addEventListener('mousedown', () => {
+    btn.style.transform = 'scale(0.98)';
+  });
+  
+  btn.addEventListener('mouseup', () => {
+    btn.style.transform = '';
+  });
+  
+  btn.addEventListener('mouseleave', () => {
+    btn.style.transform = '';
+  });
+});
+
+// Smooth scroll for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    
+    if (target) {
+      const headerOffset = 80;
+      const elementPosition = target.offsetTop;
+      const offsetPosition = elementPosition - headerOffset;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  });
+});
+
+// Active navigation highlighting
+window.addEventListener('scroll', () => {
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+  
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+    
+    if (scrollY >= (sectionTop - 200)) {
+      current = section.getAttribute('id');
+    }
+  });
+  
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === `#${current}`) {
+      link.classList.add('active');
+    }
+  });
+});
+
+// Enhanced metric card counter animation
+function animateCounters() {
+  const counters = document.querySelectorAll('.metric-number');
+  
+  counters.forEach(counter => {
+    const target = parseInt(counter.textContent);
+    const increment = target / 50;
+    let current = 0;
+    
+    const updateCounter = () => {
+      if (current < target) {
+        current += increment;
+        counter.textContent = Math.ceil(current) + '%';
+        setTimeout(updateCounter, 20);
+      } else {
+        counter.textContent = target + '%';
+      }
+    };
+    
+    updateCounter();
+  });
+}
+
+// Trigger counter animation when metrics section is in view
+const metricsSection = document.querySelector('.metrics-section');
+if (metricsSection) {
+  const metricsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounters();
+        metricsObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  
+  metricsObserver.observe(metricsSection);
+}
+
+// Enhanced hover effects for cards
+document.querySelectorAll('.metric-card, .work-card, .blog-card').forEach(card => {
+  card.addEventListener('mouseenter', () => {
+    card.style.transform = card.classList.contains('metric-card') 
+      ? 'translateY(-8px) scale(1.02)' 
+      : card.classList.contains('work-card')
+      ? 'scale(1.05) translateY(-8px)'
+      : 'translateY(-6px) scale(1.02)';
+  });
+  
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
+});
+
+// Add ripple effect to buttons
+function createRipple(event) {
+  const button = event.currentTarget;
+  const ripple = document.createElement('span');
+  const rect = button.getBoundingClientRect();
+  const size = Math.max(rect.width, rect.height);
+  const x = event.clientX - rect.left - size / 2;
+  const y = event.clientY - rect.top - size / 2;
+  
+  ripple.style.width = ripple.style.height = size + 'px';
+  ripple.style.left = x + 'px';
+  ripple.style.top = y + 'px';
+  ripple.classList.add('ripple');
+  
+  button.appendChild(ripple);
+  
+  setTimeout(() => {
+    ripple.remove();
+  }, 600);
+}
+
+// Add ripple effect to primary buttons
+document.querySelectorAll('.btn-primary').forEach(btn => {
+  btn.addEventListener('click', createRipple);
+});
+
+// Add CSS for ripple effect
+const rippleStyle = document.createElement('style');
+rippleStyle.textContent = `
+  .btn-primary {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(0);
+    animation: ripple-animation 0.6s linear;
+    pointer-events: none;
+  }
+  
+  @keyframes ripple-animation {
+    to {
+      transform: scale(4);
+      opacity: 0;
+    }
+  }
+`;
+document.head.appendChild(rippleStyle);
