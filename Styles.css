@@ -276,6 +276,18 @@ h2, .section-title {
   margin-bottom: 1rem;
   letter-spacing: 0.01em;
 }
+
+/* Style for Six Red Marbles link */
+.about-text a {
+  color: #E60000;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.about-text a:hover {
+  color: #cc0000;
+}
 .team-summary {
   background: #f8f9fa;
   border-left: 4px solid #E60000;
@@ -312,6 +324,15 @@ h2, .section-title {
   line-height: 1.8;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+/* Ensure consistent font size for all About Us text */
+.about-text p,
+.about-text ul,
+.about-text li,
+.developer-network-section p {
+  font-size: 1.1rem;
+  line-height: 1.8;
 }
   .why-vr-list {
     list-style: disc inside;
