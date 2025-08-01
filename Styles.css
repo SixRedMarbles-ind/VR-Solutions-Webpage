@@ -704,8 +704,12 @@ h2, .section-title {
 
 /* About Section */
 .about-section {
-  background: #ffffff;
+  background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url('https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   padding: 80px 0;
+  position: relative;
 }
   .about-block {
     display: flex;
@@ -750,7 +754,9 @@ h2, .section-title {
 }
 
 .developer-network-section {
-background: #f8f9fa;
+  background: linear-gradient(rgba(248, 249, 250, 0.85), rgba(248, 249, 250, 0.85)), url('https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+  background-size: cover;
+  background-position: center;
   padding: 2rem;
   border-top: 4px solid #E60000;
   margin-top: 2rem;
@@ -997,44 +1003,76 @@ background: #f8f9fa;
   
   /* Contact Section */
   .contact-section {
-    background: #ffffff; /* White */
-    padding: 60px 0;
-  }
+  background: linear-gradient(rgba(0, 27, 45, 0.9), rgba(0, 27, 45, 0.9)), url('https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: white;
+  padding: 80px 2rem;
+  border-radius: 20px;
+  margin: 2rem 2rem;
+  text-align: center;
+  max-width: calc(100% - 4rem);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-section .section-title {
+  color: white !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
   .contact-form {
-    background: #fafafa;
-    padding: 30px 25px;
-    border-radius: 14px;
-    box-shadow: 0 2px 10px rgb(0 27 45 / 0.15);
-    max-width: 550px;
-    margin: 0 auto;
-  }
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+  width: 100%;
+}
   .form-group {
     margin-bottom: 18px;
     display: flex;
     flex-direction: column;
   }
   .form-group label {
-    font-weight: 600;
-    margin-bottom: 6px;
-    color: #001b2d;
-    font-size: 0.9rem;
-  }
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: white;
+  font-size: 0.9rem;
+}
   .form-group input,
-  .form-group textarea {
-    resize: vertical;
-    padding: 12px;
-    border: 1.5px solid #e4e5e6;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-family: inherit;
-    color: #4a4545;
-    transition: border-color 0.3s ease;
-  }
+.form-group textarea {
+  resize: vertical;
+  padding: 12px 16px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
   .form-group input:focus,
-  .form-group textarea:focus {
-    border-color: #d80000;
-    outline: none;
-  }
+.form-group textarea:focus {
+  border-color: #E60000;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 3px rgba(230, 0, 0, 0.1);
+  outline: none;
+}
+
+.form-group input:hover,
+.form-group textarea:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.12);
+}
   .form-status {
     margin-top: 12px;
     font-weight: 700;
@@ -1201,6 +1239,16 @@ background: #f8f9fa;
     }
     .about-section {
       padding: 30px 0 20px;
+      background-attachment: scroll;
+    }
+    
+    .developer-network-section {
+      background-attachment: scroll;
+    }
+    
+    .contact-section {
+      background-attachment: scroll;
+      margin: 1rem 0;
     }
   }
   
