@@ -750,16 +750,11 @@ h2, .section-title {
 }
 
 .developer-network-section {
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  width: 100vw;
-  background: #f8f9fa;
+background: #f8f9fa;
   padding: 2rem;
   border-top: 4px solid #E60000;
   margin-top: 2rem;
+  border-radius: 10px;
 }
 
 .developer-network-section h3 {
