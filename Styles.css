@@ -523,10 +523,14 @@
   object-fit: contain;
   display: block;
   transition: transform 0.3s ease;
+  background: transparent;
+  border-radius: 8px;
+  padding: 8px;
 }
 
 .nav-logo-img:hover img {
   transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.1);
 }
   .nav-menu {
   list-style: none;
@@ -787,6 +791,7 @@ h2, .section-title {
   border-top: 4px solid #E60000;
   margin-top: 2rem;
   border-radius: 10px;
+  text-align: center;
 }
 
 .developer-network-section h3 {
@@ -1257,6 +1262,7 @@ h2, .section-title {
     }
     .nav-logo-img img, .footer-logo {
       height: 48px;
+      padding: 4px;
     }
     .video-modal iframe {
       width: 95vw;
