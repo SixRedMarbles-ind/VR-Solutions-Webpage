@@ -68,37 +68,76 @@ if (contactForm) {
     submitBtn.style.background = 'linear-gradient(135deg, #666, #888)';
     submitBtn.style.transform = 'scale(0.98)';
     
-    // Simulate form submission (replace with actual form handling)
-    setTimeout(() => {
-      // Success animation
-      contactForm.classList.add('form-success');
+    // Collect form data
+    const formData = new FormData(contactForm);
+    const data = {
+      Name: formData.get('Name'),
+      Email: formData.get('Email'),
+      Company: formData.get('Company'),
+      Message: formData.get('Message')
+    };
+    
+    // Send to SheetDB
+    fetch('https://sheetdb.io/api/v1/ltnoe7dwmxna4', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => {
+      if (response.ok) {
+        // Success animation
+        contactForm.classList.add('form-success');
+        
+        // Show success message with premium styling
+        formStatus.textContent = '✓ Thank you! Your message has been sent successfully.';
+        formStatus.style.color = '#28a745';
+        formStatus.style.fontWeight = '600';
+        
+        // Reset form
+        contactForm.reset();
+        
+        // Reset button with premium styling
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+        submitBtn.style.background = 'linear-gradient(135deg, #E60000, #cc0000)';
+        submitBtn.style.transform = 'scale(1)';
+        
+        // Remove success class after animation
+        setTimeout(() => {
+          contactForm.classList.remove('form-success');
+        }, 600);
+        
+        // Clear status message after 5 seconds
+        setTimeout(() => {
+          formStatus.textContent = '';
+          formStatus.style.fontWeight = 'normal';
+        }, 5000);
+      } else {
+        throw new Error('Network response was not ok');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
       
-      // Show success message with premium styling
-      formStatus.textContent = '✓ Thank you! Your message has been sent successfully.';
-      formStatus.style.color = '#28a745';
+      // Show error message
+      formStatus.textContent = '✗ Sorry, there was an error sending your message. Please try again.';
+      formStatus.style.color = '#dc3545';
       formStatus.style.fontWeight = '600';
       
-      // Reset form
-      contactForm.reset();
-      
-      // Reset button with premium styling
+      // Reset button
       submitBtn.textContent = originalText;
       submitBtn.disabled = false;
       submitBtn.style.background = 'linear-gradient(135deg, #E60000, #cc0000)';
       submitBtn.style.transform = 'scale(1)';
       
-      // Remove success class after animation
-      setTimeout(() => {
-        contactForm.classList.remove('form-success');
-      }, 600);
-      
-      // Clear status message after 5 seconds
+      // Clear error message after 5 seconds
       setTimeout(() => {
         formStatus.textContent = '';
         formStatus.style.fontWeight = 'normal';
       }, 5000);
-      
-    }, 2000);
+    });
   });
   
   // Real-time form validation with micro-interactions
