@@ -60,27 +60,32 @@ if (contactForm) {
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     
-    // Add loading state
+    // Add loading state with premium styling
     const submitBtn = contactForm.querySelector('button[type="submit"]');
     const originalText = submitBtn.textContent;
     submitBtn.textContent = 'Sending...';
     submitBtn.disabled = true;
+    submitBtn.style.background = 'linear-gradient(135deg, #666, #888)';
+    submitBtn.style.transform = 'scale(0.98)';
     
     // Simulate form submission (replace with actual form handling)
     setTimeout(() => {
       // Success animation
       contactForm.classList.add('form-success');
       
-      // Show success message
-      formStatus.textContent = 'Thank you! Your message has been sent successfully.';
+      // Show success message with premium styling
+      formStatus.textContent = '✓ Thank you! Your message has been sent successfully.';
       formStatus.style.color = '#28a745';
+      formStatus.style.fontWeight = '600';
       
       // Reset form
       contactForm.reset();
       
-      // Reset button
+      // Reset button with premium styling
       submitBtn.textContent = originalText;
       submitBtn.disabled = false;
+      submitBtn.style.background = 'linear-gradient(135deg, #E60000, #cc0000)';
+      submitBtn.style.transform = 'scale(1)';
       
       // Remove success class after animation
       setTimeout(() => {
@@ -90,6 +95,7 @@ if (contactForm) {
       // Clear status message after 5 seconds
       setTimeout(() => {
         formStatus.textContent = '';
+        formStatus.style.fontWeight = 'normal';
       }, 5000);
       
     }, 2000);
@@ -185,18 +191,32 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// Enhanced button micro-interactions
+// Enhanced button micro-interactions with premium feedback
 document.querySelectorAll('.btn-primary, .btn-outline').forEach(btn => {
   btn.addEventListener('mousedown', () => {
     btn.style.transform = 'scale(0.98)';
+    btn.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.2)';
   });
   
   btn.addEventListener('mouseup', () => {
     btn.style.transform = '';
+    btn.style.boxShadow = '';
   });
   
   btn.addEventListener('mouseleave', () => {
     btn.style.transform = '';
+    btn.style.boxShadow = '';
+  });
+  
+  // Add focus states for accessibility
+  btn.addEventListener('focus', () => {
+    btn.style.outline = '2px solid #E60000';
+    btn.style.outlineOffset = '2px';
+  });
+  
+  btn.addEventListener('blur', () => {
+    btn.style.outline = '';
+    btn.style.outlineOffset = '';
   });
 });
 
@@ -280,9 +300,16 @@ if (metricsSection) {
   metricsObserver.observe(metricsSection);
 }
 
-// Enhanced hover effects for cards
+// Enhanced hover effects for cards with premium interactions
 document.querySelectorAll('.metric-card, .work-card, .blog-card').forEach(card => {
   card.addEventListener('mouseenter', () => {
+    // Add premium glow effect
+    card.style.boxShadow = card.classList.contains('metric-card') 
+      ? '0 16px 48px rgba(230, 0, 0, 0.2)' 
+      : card.classList.contains('work-card')
+      ? '0 16px 48px rgba(0, 27, 45, 0.2)'
+      : '0 16px 48px rgba(0, 27, 45, 0.15)';
+    
     card.style.transform = card.classList.contains('metric-card') 
       ? 'translateY(-8px) scale(1.02)' 
       : card.classList.contains('work-card')
@@ -292,6 +319,7 @@ document.querySelectorAll('.metric-card, .work-card, .blog-card').forEach(card =
   
   card.addEventListener('mouseleave', () => {
     card.style.transform = '';
+    card.style.boxShadow = '';
   });
 });
 
