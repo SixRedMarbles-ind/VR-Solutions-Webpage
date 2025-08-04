@@ -1164,7 +1164,8 @@ h2, .section-title {
   }
   
   .footer-link:hover {
-    color: #E60000;
+    color: #D80000;
+    text-decoration: none;
     background: rgba(230, 0, 0, 0.1);
     transform: translateY(-2px);
   }
@@ -1175,6 +1176,10 @@ h2, .section-title {
   .footer-link span {
     font-size: 0.95rem;
   }
+    .footer-link i {
+  color: inherit;                /* icon uses same color as text */
+}
+
   
   /* Ultra-wide screens */
 @media (min-width: 1600px) {
