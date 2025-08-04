@@ -745,7 +745,8 @@ h2, .section-title {
     display: flex;
     gap: 40px;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
+    max-width: 100%;
   }
   .about-text {
   flex: 1 1 340px;
@@ -803,7 +804,7 @@ h2, .section-title {
 }
 
 .developer-network-section p {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   color: #001b2d;
   line-height: 1.8;
 }
