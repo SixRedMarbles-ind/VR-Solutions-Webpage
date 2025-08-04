@@ -1148,7 +1148,7 @@ h2, .section-title {
     flex-wrap: wrap;
     justify-content: center;
   }
-  }
+  
   
   .footer-link {
     display: flex;
@@ -1314,4 +1314,6 @@ h2, .section-title {
       margin: 1rem 0;
     }
   }
-  
+  a {
+      text-decoration: none;
+  }
