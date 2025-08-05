@@ -513,7 +513,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 0.5rem 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -525,7 +525,7 @@
   transition: transform 0.3s ease;
   background: transparent;
   border-radius: 8px;
-  padding: 8px;
+  padding: 6px;
 }
 
 .nav-logo-img:hover img {
@@ -603,7 +603,7 @@
   align-items: center;
   background: #ffffff;
   color: #001b2d;
-  padding-top: 80px;
+  padding-top: 100px;
   position: relative;
   overflow: hidden;
 }
