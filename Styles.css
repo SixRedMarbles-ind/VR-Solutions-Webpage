@@ -1376,7 +1376,8 @@ h2, .section-title {
     
     .contact-section {
       background-attachment: scroll;
-      margin: 1rem 0;
+       margin: 1rem auto; /* center horizontally on mobile */
+      max-width: calc(100% - 2rem); /* keep some gutter while allowing centering */
     }
   }
   
