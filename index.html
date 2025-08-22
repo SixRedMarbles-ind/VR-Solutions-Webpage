@@ -6,13 +6,14 @@
   <title>Six Red Marbles | VR Solutions</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" href="srm-logo-icon.png" type="image/png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="Styles.css" />
   <script defer src="interact.js"></script>
 </head>
 <body>
+  <div id="scroll-progress"></div>
 
   <!-- Navigation Bar -->
   <nav class="navbar">
@@ -109,21 +110,58 @@
         <div class="play-overlay">
           <div class="play-icon">▶</div>
         </div>
+        <span class="industry-tag industry--energy">Energy</span>
         <p class="work-desc">VR Training: Hydrogen Factory Interactive Training </p>
+        <a class="know-more" href="work.html?w=hydrogen-training">Know More</a>
       </div>
       <div class="work-card" tabindex="0" data-video="Vs2ObmvJSrw">
         <img src="https://img.youtube.com/vi/Vs2ObmvJSrw/maxresdefault.jpg" alt="Corporate VR demo"/>
         <div class="play-overlay">
           <div class="play-icon">▶</div>
         </div>
+        <span class="industry-tag industry--energy">Energy</span>
         <p class="work-desc">VR Simulation: Wind Turbine Motor Inspection Training </p>
+        <a class="know-more" href="work.html?w=wind-turbine">Know More</a>
       </div>
       <div class="work-card" tabindex="0" data-video="irK-zp9lwag">
         <img src="https://img.youtube.com/vi/irK-zp9lwag/maxresdefault.jpg" alt="Safety VR demo" />
         <div class="play-overlay">
           <div class="play-icon">▶</div>
         </div>
+        <span class="industry-tag industry--softskills">Soft Skills</span>
         <p class="work-desc">VR Assistance: International Adaptability Training for Individuals.</p>
+        <a class="know-more" href="work.html?w=adaptability-training">Know More</a>
+      </div>
+
+      <!-- Additional work cards -->
+      <div class="work-card" tabindex="0" data-video="hurzdFaczY8">
+        <img src="thumb-healthcare.jpg" alt="Healthcare VR Simulation" loading="lazy" />
+        <div class="play-overlay">
+          <div class="play-icon">▶</div>
+        </div>
+        <span class="industry-tag industry--healthcare">Healthcare</span>
+        <p class="work-desc">VR Simulation: Healthcare Training</p>
+        <a class="know-more" href="work.html?w=healthcare-surgical">Know More</a>
+      </div>
+
+      <div class="work-card" tabindex="0" data-video="G7MFFsoe2p0">
+        <img src="thumb-early-childhood.jpg" alt="Early Childhood & Caregiver Training" loading="lazy" />
+        <div class="play-overlay">
+          <div class="play-icon">▶</div>
+        </div>
+        <span class="industry-tag industry--Education-Early Childhood & Caregiver Training">Education</span>
+        <p class="work-desc">VR Training: Early Childhood & Caregiver Training</p>
+        <a class="know-more" href="work.html?w=aerospace-maintenance">Know More</a>
+      </div>
+
+      <div class="work-card" tabindex="0" data-video="C7Jg6TOz5YY">
+        <img src="thumb-electrical.jpg" alt="Industrial Electrical Safety Training" loading="lazy" />
+        <div class="play-overlay">
+          <div class="play-icon">▶</div>
+        </div>
+        <span class="industry-tag industry--Electrical Safety in Energy Industry">Electrical</span>
+        <p class="work-desc">VR Training: Industrial Electrical Safety Training</p>
+        <a class="know-more" href="work.html?w=retail-onboarding">Know More</a>
       </div>
     </div>
   </section>
@@ -208,6 +246,9 @@
       <iframe id="videoIframe" width="560" height="315" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
     </div>
   </div>
+
+  <!-- Back to top button -->
+  <button id="back-to-top" aria-label="Back to top" title="Back to top">▲</button>
 
 </body>
 </html>
