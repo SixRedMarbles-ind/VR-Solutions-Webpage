@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Work Details | Six Red Marbles VR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="srm-logo-icon.png" type="image/png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="Styles.css" />
+  <script defer src="interact.js"></script>
+</head>
+<body>
+  <div id="scroll-progress"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="Index.html#hero" class="nav-logo-img">
+        <img src="SRM India Transparent Logo.png" alt="Six Red Marbles India" />
+      </a>
+      <ul class="nav-menu">
+        <li><a href="Index.html#hero" class="nav-link">Home</a></li>
+        <li><a href="Index.html#about" class="nav-link">About Us</a></li>
+        <li><a href="Index.html#our-works" class="nav-link">Our Works</a></li>
+        <li><a href="Index.html#blogs" class="nav-link">Blogs</a></li>
+      </ul>
+      <a href="Index.html#contact" class="btn btn-outline">CONTACT</a>
+      <div class="nav-toggle" id="mobile-menu">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </div>
+    </div>
+  </nav>
+
+  <main class="work-page">
+    <section class="work-hero-block container">
+      <div class="work-hero-media" id="work-hero"></div>
+      <div class="work-hero-summary">
+        <h1 id="work-title">VR Module</h1>
+        <div id="industry-badges" class="work-badges"></div>
+      </div>
+    </section>
+
+    <section class="work-section container">
+      <h2 id="util-title">Gamified VR for Safer Workplaces</h2>
+      <div class="work-2col one-col">
+        <div>
+          <p id="util-desc">At Six Red Marbles, we merge immersive VR with game-based learning to transform industrial safety training. By turning compliance and hazard awareness into interactive experiences, learners can build skills faster, safer, and with greater confidence.</p>
+          <ul id="feature-list" class="check-list">
+            <li>Simulates critical workflows with stepwise guidance</li>
+            <li>Card Memory Game – strengthens recall, concept pairing, and attention to detail</li>
+            <li>CCTV Simulation – develops vigilance by spotting hazards in real-time feeds</li>
+            <li>ATEX Label Reconstruction – makes compliance training hands-on through 3D interaction</li>
+            <li>3D Drag & Drop Hazard Identification – reinforces safety awareness in spatial, intuitive ways</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="work-section container">
+      <h2>Advantages</h2>
+      <ul id="advantages-list" class="benefits-list">
+        <li>Safer practice with zero real-world risk</li>
+        <li>Game mechanics drive engagement and motivation</li>
+        <li>Standardized compliance and SOP training</li>
+        <li>Spatial learning improves recall and retention</li>
+        <li>Scalable modules across industries and teams</li>
+        <li>Lower cost than repeated physical workshops</li>
+      </ul>
+    </section>
+
+    <section class="work-section container">
+      <h2>Impact Metrics</h2>
+      <div class="metrics-tiles" id="metrics"></div>
+    </section>
+
+    
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-links">
+        <a href="mailto:salesindia@sixredmarbles.com" class="footer-link">
+          <i class="fas fa-envelope"></i>
+          <span>salesindia@sixredmarbles.com</span>
+        </a>
+        <a href="https://www.linkedin.com/company/sixredmarbles-india/" target="_blank" class="footer-link">
+          <i class="fab fa-linkedin"></i>
+          <span>LinkedIn</span>
+        </a>
+        <a href="https://www.sixredmarbles.com" target="_blank" class="footer-link">
+          <i class="fas fa-globe"></i>
+          <span>www.sixredmarbles.in</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <button id="back-to-top" aria-label="Back to top" title="Back to top">▲</button>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const key = params.get('w') || 'hydrogen-training';
+    const WORKS = {
+      'hydrogen-training': {
+        title: 'Hydrogen Factory Interactive Training',
+        video: 'qwXOMzUVIoo',
+        industries: ['Energy','Safety & Compliance Training'],
+        utilTitle: 'Gamified VR for Safer Workplaces',
+        description: 'At Six Red Marbles, we merge immersive VR with game-based learning to transform industrial safety training. By turning compliance and hazard awareness into interactive experiences, learners can build skills faster, safer, and with greater confidence.',
+        features: [
+          'Simulates critical workflows with stepwise guidance',
+          'Card Memory Game – strengthens recall, concept pairing, and attention to detail',
+          'CCTV Simulation – develops vigilance by spotting hazards in real-time feeds',
+          'ATEX Label Reconstruction – makes compliance training hands-on through 3D interaction',
+          '3D Drag & Drop Hazard Identification – reinforces safety awareness in spatial, intuitive ways'
+        ],
+        advantages: [
+          'Safer practice with zero real-world risk',
+          'Game mechanics drive engagement and motivation',
+          'Standardized compliance and SOP training',
+          'Spatial learning improves recall and retention',
+          'Scalable modules across industries and teams',
+          'Lower cost than repeated physical workshops'
+        ],
+        metrics: [['75%','Higher retention'],['40%','Fewer errors'],['3x','Faster mastery']]
+      },
+      'wind-turbine': {
+        title: 'Wind Turbine Motor Inspection Training',
+        video: 'Vs2ObmvJSrw',
+        industries: ['Energy','Industrial Equipment Maintenance'],
+        utilTitle: 'VR Training for Wind Turbine Inspection',
+        description: 'At Six Red Marbles, we’re redefining technical training with immersive, tool-based VR simulations that replicate real-world industrial environments—safely, accurately, and interactively. Our Wind Turbine Motor Inspection module gives technicians the confidence and skills to perform high-risk tasks before ever stepping into the field.',
+        features: [
+          'Simulates critical workflows with stepwise guidance',
+          'Tool Operation – practice with virtual screwdrivers, torque wrenches, and thermal cameras',
+          'Safety Protocols – follow industry safety steps in sequence, error-free',
+          'Diagnostic Training – identify and analyze heat anomalies using sensor data',
+          'Equipment Securing – apply manufacturer torque guidelines for accurate, safe closure'
+        ],
+        advantages: [
+          'Risk-free training for hazardous environments',
+          'Muscle memory through realistic tool handling',
+          'Procedural accuracy before real-world deployment',
+          'Faster onboarding with reduced training costs',
+          'Confidence-building for field technicians',
+          'Scalable training across dispersed teams'
+        ],
+        metrics: [['70%','Faster readiness for field deployment'],['50%','Lower onboarding costs'],['4x','More practice opportunities']]
+      },
+      'adaptability-training': {
+        title: 'International Adaptability Training',
+        video: 'irK-zp9lwag',
+        industries: ['Education','Soft Skills','Global Readiness Training'],
+        utilTitle: 'VR Training for Global Readiness',
+        description: 'At Six Red Marbles, we help students and professionals prepare for success abroad—before they even leave home. Our immersive VR simulations build cultural intelligence, time management skills, and confidence in navigating international routines.',
+        features: [
+          'Simulates critical workflows with stepwise guidance',
+          'Academic Planning – create class schedules balancing study and extracurriculars',
+          'Cultural Adaptation – understand how norms shape punctuality and daily habits',
+          'Peer Coaching – guide international classmates through adapting to new expectations',
+          'Morning Routine Simulation – practice daily decision-making in different cultural contexts'
+        ],
+        advantages: [
+          'Hands-on cultural learning beyond textbooks',
+          'Safer, repeatable practice of real-world scenarios',
+          'Boosts adaptability for global academic and work settings',
+          'Builds confidence before international relocation',
+          'Customizable modules for specific countries and institutions',
+          'Scalable for schools, universities, and corporate mobility programs'
+        ],
+        metrics: [['80%','Improved cultural awareness and adaptability'],['60%','Faster adjustment to international environments'],['2x','Greater retention vs. classroom-only cultural training']]
+      },
+      'healthcare-surgical': {
+        title: 'Surgical Skills & Patient Safety',
+        poster: 'Healthcare.png',
+        industries: ['Healthcare','Nursing','Medical Training'],
+        video: 'hurzdFaczY8',
+        utilTitle: 'Immersive VR for Healthcare Training',
+        description: 'At Six Red Marbles, we make critical healthcare training safe, scalable, and interactive. Our VR modules allow nursing professionals and medical learners to practice essential procedures—from patient care to clinical workflows—inside lifelike environments, without the risks of real-world exposure.',
+        features: [
+          'Simulates critical workflows with stepwise guidance',
+          'Clinical Procedures – practice blood glucose checks, hygiene protocols, and safe handling',
+          'Emergency Scenarios – rehearse rapid decision-making in simulated crises',
+          'Patient Interaction – develop empathy, communication, and bedside manner',
+          'Team Collaboration – coordinate with peers in shared virtual environments'
+        ],
+        advantages: [
+          'Risk-free practice of high-stakes medical tasks',
+          'Builds confidence and reduces clinical errors',
+          'Enhances empathy and communication skills',
+          'Standardized, repeatable training across campuses',
+          'Scales cost-effectively across healthcare systems',
+          'Reduces dependency on limited physical labs and mannequins'
+        ],
+        metrics: [['80%','Improved clinical skill retention'],['50%','Reduction in training-related errors'],['2.5x','Faster onboarding for healthcare staff']]
+      },
+      'aerospace-maintenance': {
+        title: 'Immersive VR Training for Early Childhood Professionals',
+        industries: ['Education','Early Childhood','Teacher Training'],
+        video: 'G7MFFsoe2p0',
+        utilTitle: 'Immersive VR Training for Early Childhood Professionals',
+        description: 'At Six Red Marbles, we’re transforming how early childhood professionals prepare for real-world care. Through hands-on, lifelike VR simulations, learners can practice engagement, observation, and intervention—building both skill and instinct in a safe, repeatable environment.',
+        features: [
+          'Simulates critical workflows with stepwise guidance',
+          'Daily Routines – review the transmission notebook to prepare for the day',
+          'Child Interaction – welcome children into the nursery and establish trust',
+          'Learning Activities – lead engaging storytime sessions with active participation',
+          'Behavior Observation – assess children’s actions and apply correct care protocols'
+        ],
+        advantages: [
+          'Safe, risk-free practice of childcare scenarios',
+          'Builds empathy and confidence for new caregivers',
+          'Standardized training for diverse early education settings',
+          'Reinforces situational awareness and quick decision-making',
+          'Scalable training for institutions and childcare programs',
+          'Reduces reliance on limited in-person roleplay sessions'
+        ],
+        metrics: [['85%','Higher confidence before first real-world placement'],['60%','Faster adaptation to classroom/nursery environments'],['2x','Better recall of child engagement and safety protocols']]
+      },
+      'retail-onboarding': {
+        title: 'Electrical Safety in Action — Through Immersive VR',
+        industries: ['Energy','Manufacturing','Electrical Safety Training'],
+        video: 'C7Jg6TOz5YY',
+        utilTitle: 'Electrical Safety in Action — Through Immersive VR',
+        description: 'At Six Red Marbles, we bring industrial safety training into the virtual world—making complex procedures safer, smarter, and endlessly repeatable. Our latest VR module trains learners in high-stakes electrical safety within a windmill maintenance workshop.',
+        features: [
+          'Simulates critical workflows with stepwise guidance',
+          'Corrective Maintenance – safely operate on a Briqueticc machine’s compression chamber',
+          'Lockout/Tagout Procedures – follow strict electrical isolation steps before intervention',
+          'Risk Awareness – identify hazards and prevent unsafe actions in real time',
+          'Hands-On Rehearsal – practice technical steps until they become second nature'
+        ],
+        advantages: [
+          'Risk-free training for hazardous electrical tasks',
+          'Builds confidence in lockout/tagout compliance',
+          'Improves retention of safety protocols through immersion',
+          'Standardized training for vocational and industrial programs',
+          'Scales across renewable energy and manufacturing industries',
+          'Reduces workplace accidents and costly downtime'
+        ],
+        metrics: [['70%','Reduction in procedural errors'],['3x','More engagement vs. traditional safety training'],['50%','Faster onboarding for new technicians']]
+      }
+    };
+    const data = WORKS[key] || WORKS['hydrogen-training'];
+    document.getElementById('work-title').textContent = data.title;
+    const hero = document.getElementById('work-hero');
+    if (data.video) {
+      hero.innerHTML = `<iframe src="https://www.youtube.com/embed/${data.video}" allowfullscreen loading="lazy"></iframe>`;
+    } else if (data.poster) {
+      hero.innerHTML = `<img src="${data.poster}" alt="${data.title}">`;
+    }
+    const badges = document.getElementById('industry-badges');
+    badges.innerHTML = (data.industries||[]).map(i => `<span class="industry-tag" style="margin-right:8px;">${i}</span>`).join('');
+    // Populate utilization section and lists if provided
+    if (data.utilTitle) {
+      const t = document.getElementById('util-title');
+      if (t) t.textContent = data.utilTitle;
+    }
+    if (data.description) {
+      const d = document.getElementById('util-desc');
+      if (d) d.textContent = data.description;
+    }
+    if (Array.isArray(data.features)) {
+      const f = document.getElementById('feature-list');
+      if (f) f.innerHTML = data.features.map(item => `<li>${item}</li>`).join('');
+    }
+    if (Array.isArray(data.advantages)) {
+      const a = document.getElementById('advantages-list');
+      if (a) a.innerHTML = data.advantages.map(item => `<li>${item}</li>`).join('');
+    }
+    const metrics = document.getElementById('metrics');
+    metrics.innerHTML = (data.metrics||[]).map(([v,t]) => `<div class="metric-card"><div class="metric-number">${v}</div><div class="metric-text">${t}</div></div>`).join('');
+  </script>
+</body>
+</html>
+
