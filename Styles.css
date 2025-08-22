@@ -879,9 +879,10 @@ line-height: 1.8;
   position: relative;
 }
 .works-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+   display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
   gap: 16px;
+  grid-auto-flow: row;
 }
 .work-card {
 background: linear-gradient(135deg, #ffffff, #f9fafb);
