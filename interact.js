@@ -213,6 +213,16 @@ document.querySelectorAll('.work-card').forEach(card => {
   });
 });
 
+// Prevent video modal when clicking on interactive elements inside cards
+document.querySelectorAll('.work-card .know-more, .work-card a, .work-card button').forEach(el => {
+  el.addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
+  el.addEventListener('keydown', (e) => {
+    e.stopPropagation();
+  });
+});
+
 // Close modal when clicking outside
 document.getElementById('videoModal').addEventListener('click', (e) => {
   if (e.target.id === 'videoModal') {
@@ -228,6 +238,42 @@ document.addEventListener('keydown', (e) => {
       closeVideoModal();
     }
   }
+});
+
+// Scroll progress bar & back-to-top button
+const progressBar = document.getElementById('scroll-progress');
+const backToTopBtn = document.getElementById('back-to-top');
+
+function updateScrollUI() {
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  if (progressBar) progressBar.style.width = progress + '%';
+  if (backToTopBtn) backToTopBtn.style.display = scrollTop > 400 ? 'flex' : 'none';
+}
+window.addEventListener('scroll', updateScrollUI, { passive: true });
+window.addEventListener('resize', updateScrollUI);
+updateScrollUI();
+
+if (backToTopBtn) {
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+// Subtle parallax/tilt on work-card images
+document.querySelectorAll('.work-card').forEach(card => {
+  const img = card.querySelector('img');
+  if (!img) return;
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    img.style.transform = `scale(1.03) translate(${x * 6}px, ${y * 6}px)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    img.style.transform = 'scale(1) translate(0,0)';
+  });
 });
 
 // Enhanced button micro-interactions with premium feedback
