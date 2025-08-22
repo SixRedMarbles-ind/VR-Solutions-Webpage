@@ -879,8 +879,8 @@ line-height: 1.8;
   position: relative;
 }
 .works-grid {
-   display: grid !important;
-  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+   display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
   grid-auto-flow: row;
 }
